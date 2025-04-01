@@ -1,9 +1,10 @@
-import { CreateItemDto } from './dto/create-item.dto';
 import { ItemsService } from './items.service';
 import { Item } from './items.interface';
+import { LoggerService } from '../logger/logger.service';
 export declare class ItemsController {
     private readonly itemsService;
-    constructor(itemsService: ItemsService);
-    create(data: CreateItemDto): Object;
-    findAll(): Array<Item>;
+    private readonly logger;
+    constructor(itemsService: ItemsService, logger: LoggerService);
+    findAll(): Item[];
+    create(payload: any): Object;
 }

@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateItemDto = void 0;
+exports.CreateItemsDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateItemDto {
+const class_transformer_1 = require("class-transformer");
+const create_item_dto_1 = require("./create-item.dto");
+class CreateItemsDto {
 }
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateItemDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateItemDto.prototype, "description", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], CreateItemDto.prototype, "price", void 0);
-exports.CreateItemDto = CreateItemDto;
-//# sourceMappingURL=create-item.dto.js.map
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ArrayMinSize)(1, { message: 'At least one item must be provided' }),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => create_item_dto_1.CreateItemDto),
+    __metadata("design:type", Array)
+], CreateItemsDto.prototype, "items", void 0);
+exports.CreateItemsDto = CreateItemsDto;
+//# sourceMappingURL=create-items.dto.js.map
