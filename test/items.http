@@ -1,0 +1,46 @@
+### Test 1: Add a single item (in array format)
+POST http://localhost:3000/items
+Content-Type: application/json
+
+[
+  {
+    "name": "Single Item in Array",
+    "description": "This is a single item being added in array format",
+    "price": 29.99
+  }
+]
+
+### Test 2: Add multiple items
+POST http://localhost:3000/items
+Content-Type: application/json
+
+[
+  {
+    "name": "Batch Item 1",
+    "description": "First item in a batch request",
+    "price": 15.99
+  },
+  {
+    "name": "Batch Item 2", 
+    "description": "Second item in a batch request",
+    "price": 25.99
+  },
+  {
+    "name": "Batch Item 3",
+    "description": "Third item in a batch request",
+    "price": 35.99
+  }
+]
+
+### Test 3: This should fail (not in array format)
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+  "name": "Non-Array Item",
+  "description": "This request should fail with a 400 Bad Request",
+  "price": 19.99
+}
+
+### Test 4: Get all items
+GET http://localhost:3000/items

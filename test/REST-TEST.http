@@ -1,0 +1,59 @@
+### Remote Azure Testing Client for Items API
+#@baseUrl = https://your-azure-app-name.azurewebsites.net
+@baseUrl = http://localhost:3000
+
+### Test 1: Get all items
+GET {{baseUrl}}/items
+Accept: application/json
+
+### Test 2: Add a single item with random name (in array format)
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+[
+  {
+    "name": "Item AZURE1",
+    "description": "This is a test item for Azure deployment",
+    "price": 25.99
+  }
+]
+
+### Test 3: Add multiple items in a single request random names
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+[
+  {
+    "name": "Item AZ-123",
+    "description": "Azure test item 1",
+    "price": 10.50
+  },
+  {
+    "name": "Item AZ-456",
+    "description": "Azure test item 2",
+    "price": 15.75
+  },
+  {
+    "name": "Item AZ-789",
+    "description": "Azure test item 3",
+    "price": 20.25
+  }
+]
+
+### Test 4: This should fail (non-array format)
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "name": "Invalid Format Item",
+  "description": "This request should fail with a 400 Bad Request",
+  "price": 22.99
+}
+
+### Test 5: Health check
+GET {{baseUrl}}/health
+Accept: application/json
+
+### Test 6: Get all items after inserts
+GET {{baseUrl}}/items
+
