@@ -10,6 +10,6 @@ metadata:
   template: quickstart-deploy-nodejs-app-service@0.0.1-beta
 services:
   web:
-    project: ./src
+    project: .
     language: js
     host: appservice
