@@ -1,6 +1,6 @@
 ### Remote Azure Testing Client for Items API
-#@baseUrl = https://your-azure-app-name.azurewebsites.net
-@baseUrl = http://localhost:3000
+@baseUrl = https://app-web-jxnloiififgxg.azurewebsites.net/
+#@baseUrl = http://localhost:3000
 
 ### Test 1: Get all items
 GET {{baseUrl}}/items

@@ -1,17 +1,34 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { INestApplication } from '@nestjs/common';
+import { Test } from '@nestjs/testing';
+import { ItemsController } from './../src/items/items.controller';
+import { ItemsService } from './../src/items/items.service';
+import { HealthController } from './../src/health/health.controller';
+import { LoggerService } from './../src/logger/logger.service';
 
 describe('AppController (e2e)', () => {
-  let app;
+  let app: INestApplication;
+  let itemsService: ItemsService;
+  let loggerService: LoggerService;
 
   beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+    loggerService = new LoggerService();
+    itemsService = new ItemsService(loggerService);
+    
+    const moduleRef = await Test.createTestingModule({
+      controllers: [ItemsController, HealthController],
+      providers: [
+        { provide: ItemsService, useValue: itemsService },
+        { provide: LoggerService, useValue: loggerService }
+      ],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleRef.createNestApplication();
     await app.init();
+  });
+
+  afterEach(async () => {
+    await app.close();
   });
 
   it('/items (GET)', () => {
