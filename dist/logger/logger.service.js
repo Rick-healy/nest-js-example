@@ -19,10 +19,7 @@ let LoggerService = class LoggerService {
         this.printMessage(message, 'log', context);
     }
     error(message, trace, context) {
-        this.printMessage(message, 'error', context);
-        if (trace) {
-            console.error(trace);
-        }
+        this.printMessage(message, 'error', context, trace);
     }
     warn(message, context) {
         this.printMessage(message, 'warn', context);
@@ -33,27 +30,51 @@ let LoggerService = class LoggerService {
     verbose(message, context) {
         this.printMessage(message, 'verbose', context);
     }
-    printMessage(message, level, context) {
-        const timestamp = new Date().toISOString();
-        const contextMessage = context ? `[${context}]` : '';
+    printMessage(message, level, context, trace) {
+        const logEntry = {
+            timestamp: new Date().toISOString(),
+            level: this.mapLogLevel(level),
+            message,
+            context
+        };
+        if (trace) {
+            logEntry.trace = trace;
+        }
+        const jsonLog = JSON.stringify(logEntry);
         switch (level) {
             case 'error':
-                console.error(`${timestamp} ${contextMessage} [ERROR] ${message}`);
+                console.error(jsonLog);
                 break;
             case 'warn':
-                console.warn(`${timestamp} ${contextMessage} [WARN] ${message}`);
+                console.warn(jsonLog);
                 break;
             case 'log':
-                console.log(`${timestamp} ${contextMessage} [INFO] ${message}`);
+                console.log(jsonLog);
                 break;
             case 'debug':
-                console.debug(`${timestamp} ${contextMessage} [DEBUG] ${message}`);
+                console.debug(jsonLog);
                 break;
             case 'verbose':
-                console.log(`${timestamp} ${contextMessage} [VERBOSE] ${message}`);
+                console.log(jsonLog);
                 break;
             default:
-                console.log(`${timestamp} ${contextMessage} [UNKNOWN] ${message}`);
+                console.log(jsonLog);
+        }
+    }
+    mapLogLevel(level) {
+        switch (level) {
+            case 'log':
+                return 'INFO';
+            case 'error':
+                return 'ERROR';
+            case 'warn':
+                return 'WARN';
+            case 'debug':
+                return 'DEBUG';
+            case 'verbose':
+                return 'VERBOSE';
+            default:
+                return 'UNKNOWN';
         }
     }
 };

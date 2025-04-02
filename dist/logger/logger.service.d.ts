@@ -7,4 +7,5 @@ export declare class LoggerService {
     debug(message: string, context?: string): void;
     verbose(message: string, context?: string): void;
     private printMessage;
+    private mapLogLevel;
 }
