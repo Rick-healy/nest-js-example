@@ -61,9 +61,9 @@ let ItemsService = class ItemsService {
         return this.items;
     }
 };
-ItemsService = __decorate([
+exports.ItemsService = ItemsService;
+exports.ItemsService = ItemsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [logger_service_1.LoggerService])
 ], ItemsService);
-exports.ItemsService = ItemsService;
 //# sourceMappingURL=items.service.js.map

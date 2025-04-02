@@ -14,12 +14,12 @@ const health_controller_1 = require("./health/health.controller");
 const logger_module_1 = require("./logger/logger.module");
 let AppModule = class AppModule {
 };
-AppModule = __decorate([
+exports.AppModule = AppModule;
+exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [logger_module_1.LoggerModule],
         controllers: [items_controller_1.ItemsController, health_controller_1.HealthController],
         providers: [items_service_1.ItemsService],
     })
 ], AppModule);
-exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

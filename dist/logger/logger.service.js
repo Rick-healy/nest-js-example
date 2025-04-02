@@ -57,9 +57,9 @@ let LoggerService = class LoggerService {
         }
     }
 };
-LoggerService = __decorate([
+exports.LoggerService = LoggerService;
+exports.LoggerService = LoggerService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [])
 ], LoggerService);
-exports.LoggerService = LoggerService;
 //# sourceMappingURL=logger.service.js.map

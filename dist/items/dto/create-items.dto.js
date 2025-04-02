@@ -15,6 +15,7 @@ const class_transformer_1 = require("class-transformer");
 const create_item_dto_1 = require("./create-item.dto");
 class CreateItemsDto {
 }
+exports.CreateItemsDto = CreateItemsDto;
 __decorate([
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.ArrayMinSize)(1, { message: 'At least one item must be provided' }),
@@ -22,5 +23,4 @@ __decorate([
     (0, class_transformer_1.Type)(() => create_item_dto_1.CreateItemDto),
     __metadata("design:type", Array)
 ], CreateItemsDto.prototype, "items", void 0);
-exports.CreateItemsDto = CreateItemsDto;
 //# sourceMappingURL=create-items.dto.js.map

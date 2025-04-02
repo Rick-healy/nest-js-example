@@ -43,6 +43,7 @@ let ItemsController = class ItemsController {
         return this.itemsService.createMany(payload);
     }
 };
+exports.ItemsController = ItemsController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -56,10 +57,9 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], ItemsController.prototype, "create", null);
-ItemsController = __decorate([
+exports.ItemsController = ItemsController = __decorate([
     (0, common_1.Controller)('items'),
     __metadata("design:paramtypes", [items_service_1.ItemsService,
         logger_service_1.LoggerService])
 ], ItemsController);
-exports.ItemsController = ItemsController;
 //# sourceMappingURL=items.controller.js.map

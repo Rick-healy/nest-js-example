@@ -28,15 +28,15 @@ let HealthController = class HealthController {
         return status;
     }
 };
+exports.HealthController = HealthController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], HealthController.prototype, "check", null);
-HealthController = __decorate([
+exports.HealthController = HealthController = __decorate([
     (0, common_1.Controller)('health'),
     __metadata("design:paramtypes", [logger_service_1.LoggerService])
 ], HealthController);
-exports.HealthController = HealthController;
 //# sourceMappingURL=health.controller.js.map

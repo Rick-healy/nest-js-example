@@ -13,6 +13,7 @@ exports.CreateItemDto = void 0;
 const class_validator_1 = require("class-validator");
 class CreateItemDto {
 }
+exports.CreateItemDto = CreateItemDto;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
@@ -25,5 +26,4 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], CreateItemDto.prototype, "price", void 0);
-exports.CreateItemDto = CreateItemDto;
 //# sourceMappingURL=create-item.dto.js.map
