@@ -53,7 +53,8 @@ export class ItemsService {
 	}
 
 	findAll(): Array<Item> {
-		this.logger.log(`Returning all items (count: ${this.items.length})`, 'ItemsService');
+		const mockDuration = Math.floor(Math.random() * 200) + 1; // Random number between 1 and 200
+		this.logger.log(`Returning all items (count: ${this.items.length}) (duration: ${mockDuration}ms)`, 'ItemsService');
 		return this.items;
 	}
 }
